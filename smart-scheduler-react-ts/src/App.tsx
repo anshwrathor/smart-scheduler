@@ -28,6 +28,12 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const deleteTask = (index: number) => {
+    const updatedTasks = [...tasks];
+    updatedTasks.splice(index, 1);
+    setTasks(updatedTasks);
+  };
+  
   return (
     <div className="App">
       <h1>Smart Scheduler</h1>
@@ -39,8 +45,13 @@ function App() {
       ) : (
         <ul>
           {tasks.map((task, index) => (
-            <li key={index}>
+            <li key={index}style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+              <span>
               <strong>{task.taskName}</strong> | {task.duration}h | Due: {task.deadline} | Priority: {task.priority}
+              </span>
+              <button onClick={() => deleteTask(index)} style={{ marginLeft: '20px', backgroundColor: '#e53935', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer' }}>
+                Delete 
+              </button>
             </li>
           ))}
         </ul>
