@@ -1,2 +1,7 @@
-# smart-scheduler
-A smart tasks scheduler app that plans your day based on your tasks, deadlines, and prioritites. 
+Smart Scheduler
+
+##Features
+- Add tasks with priority and deadline
+- Auto-sorts by urgency
+- Persists tasks using localStorage
+- Built with React + TypeScript
