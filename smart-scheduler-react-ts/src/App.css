@@ -5,7 +5,25 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f6f8fa;
   color: #333;
+  transition: background-color 0.3s, color 0.3s;
 }
+
+.App.dark {
+  background-color: #121212;
+  color: #eee;
+}
+
+.App.dark form,
+.App.dark li {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+}
+
+.App.dark button {
+  background-color: transparent;
+  color: #fff;
+}
+
 
 .App {
   max-width: 700px;

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Task } from './types';
 
 interface AddTaskFormProps {
   onAddTask: (task: Task) => void;
-}
+  editIndex: number | null;
+  taskToEdit: Task | null;
+}      
 
-const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
+const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, editIndex, taskToEdit }) => {
   const [task, setTask] = useState<Task>({
     taskName: '',
     duration: 1,
@@ -13,6 +15,12 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
     priority: 'medium',
   });
 
+  useEffect(() => {
+    if (taskToEdit) {
+      setTask(taskToEdit);
+    }
+  }, [taskToEdit]);
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setTask(prev => ({
@@ -42,7 +50,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </select>
-      <button type="submit">Add Task</button>
+      <button type="submit">{editIndex !== null ? 'Update Task' : 'Add Task'}</button>
     </form>
   );
 };
