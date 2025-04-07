@@ -3,5 +3,6 @@ export type Task = {
     duration: number;
     deadline: string;
     priority: 'high' | 'medium' | 'low';
+    completed?: boolean;
   };
   
